@@ -7,7 +7,7 @@ const App = () => <h2>App page</h2>
 const Login = () => <h2>Login page</h2>
 const Shop = () => <h2>shop page</h2>
 const Cart = () => <h2>Cart page</h2>
-const Payment = () => <h2>Payment page</h2>
+const AboutUs = () => <h2>AboutUs page</h2>
 
 const MainRouter = () => {
   // #ignore eslint
@@ -28,7 +28,7 @@ const MainRouter = () => {
             <Route path='/cart' element={<Cart />} />
           </Routes>
           <Routes>
-            <Route path='/payment' element={<Payment />} />
+            <Route path='/aboutus' element={<AboutUs />} />
           </Routes>
         </Layout>
       </Suspense>

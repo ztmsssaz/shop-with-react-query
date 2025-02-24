@@ -10,9 +10,11 @@ const resources = {
     translation: locales.fa,
   },
 }
+const localLanguge = localStorage.getItem('lang')
+
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'en',
+  lng: localLanguge ? localLanguge : 'en',
   interpolation: {
     escapeValue: false,
   },
