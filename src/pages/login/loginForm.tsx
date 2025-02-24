@@ -7,7 +7,11 @@ import {EyeOpen, EyeClose} from '../../components/ui/icons/icons'
 import {useState} from 'react'
 
 const LoginForm = () => {
-  const {t} = useTranslation()
+  const {
+    t,
+    i18n: {dir},
+  } = useTranslation()
+  const direction: string = dir()
   const [showPassword, setShowPassword] = useState<boolean>(false)
   const validationSchema = object({
     username: string().required(t('required')).min(6, t('min_username')),
@@ -64,13 +68,17 @@ const LoginForm = () => {
             />
             {showPassword ? (
               <EyeOpen
-                className='absolute cursor-pointer top-[50%] left-2 translate-y-[-50%]'
+                className={`absolute cursor-pointer top-[50%] ${
+                  direction === 'rtl' ? 'left-2' : 'right-2'
+                } translate-y-[-50%]`}
                 onClick={() => setShowPassword(!showPassword)}
                 size='20'
               />
             ) : (
               <EyeClose
-                className='absolute cursor-pointer top-[50%] left-2 translate-y-[-50%]'
+                className={`absolute cursor-pointer top-[50%] ${
+                  direction === 'rtl' ? 'left-2' : 'right-2'
+                } translate-y-[-50%]`}
                 onClick={() => setShowPassword(!showPassword)}
                 size='20'
               />
