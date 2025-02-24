@@ -7,9 +7,14 @@ function Layout({children}: {children: ReactNode}) {
     i18n: {dir, language},
   }: any = useTranslation()
   return (
-    <div className={language === 'fa' ? 'font-vazirmatn' : 'font-roboto'} dir={dir()}>
+    <div
+      className={`${
+        language === 'fa' ? 'font-vazirmatn' : 'font-roboto'
+      } bg-slate-500 min-h-screen`}
+      dir={dir()}
+    >
       <Nav />
-      {children}
+      <div className='container mx-auto text-slate-50 p-4'>{children}</div>
     </div>
   )
 }
