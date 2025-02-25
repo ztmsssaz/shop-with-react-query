@@ -4,9 +4,10 @@ import {lazy, Suspense} from 'react'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Layout from '../layout'
 import FallbackLoading from '../components/ui/loading'
+
 const App = () => <h2>App page</h2>
 const Login = lazy(() => import('../pages/login'))
-const Shop = () => <h2>shop page</h2>
+const Shop = lazy(() => import('../pages/shop/shop'))
 const Cart = () => <h2>Cart page</h2>
 const AboutUs = () => <h2>AboutUs page</h2>
 
