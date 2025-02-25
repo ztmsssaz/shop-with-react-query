@@ -1,4 +1,11 @@
+import {useTranslation} from 'react-i18next'
+
 const FallbackLoading = () => {
+  const {
+    t,
+    i18n: {language},
+  } = useTranslation()
+
   return (
     <div className='flex items-center justify-center h-screen w-screen bg-gray-100'>
       <div className='flex flex-col items-center'>
@@ -29,7 +36,13 @@ const FallbackLoading = () => {
             </circle>
           </svg>
         </div>
-        <p className='mt-4 text-gray-600 text-lg'>در حال بارگذاری...</p>
+        <p
+          className={`mt-4 text-gray-600 text-lg ${
+            language === 'fa' ? 'font-vazirmatn' : 'font-roboto'
+          }`}
+        >
+          {t('loading')}
+        </p>
       </div>
     </div>
   )

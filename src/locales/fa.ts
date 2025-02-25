@@ -11,4 +11,5 @@ export const fa = {
   min_password: 'حداقل 6 حرف',
   invalid_password: 'لطفا از حروف  و اعداد انگلیسی و کاراکترها بجز > <  استفاده کنید',
   required: 'اجباری',
+  loading: 'در حال بارگذاری...',
 }

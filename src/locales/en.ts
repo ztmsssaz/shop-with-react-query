@@ -11,4 +11,5 @@ export const en = {
   min_password: 'At least 6 characters',
   invalid_password: 'Please just enter Aa-Zz,Charecters and numbers',
   required: 'Required',
+  loading: 'Loading...',
 }
