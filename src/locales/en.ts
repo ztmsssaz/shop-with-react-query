@@ -15,4 +15,12 @@ export const en = {
   AddToCart_button: 'Add To Cart',
   currency: '$',
   add_to_cart: 'Added Seccessfully',
+  cart_empty: 'Cart is empty!',
+  cart_summary: 'Sart Summary',
+  cart_subtotal: 'Subtotal',
+  cart_shipping: 'Shipping',
+  free: 'Free',
+  cart_total: 'Total',
+  cart_checkout: 'Checkout',
+  cart_continue_shopping: 'Continue Shopping',
 }

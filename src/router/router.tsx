@@ -8,7 +8,7 @@ import FallbackLoading from '../components/ui/loading'
 const App = () => <h2>App page</h2>
 const Login = lazy(() => import('../pages/login'))
 const Shop = lazy(() => import('../pages/shop/shop'))
-const Cart = () => <h2>Cart page</h2>
+const Cart = lazy(() => import('../pages/cart/cart'))
 const AboutUs = () => <h2>AboutUs page</h2>
 
 const MainRouter = () => {

@@ -15,4 +15,12 @@ export const fa = {
   AddToCart_button: 'افزودن به سبد خرید',
   currency: 'تومان',
   add_to_cart: 'با موفقیت به سبد خرید اضافه شد',
+  cart_empty: 'سبد خرید شما خالی است!',
+  cart_summary: 'خلاصه خرید',
+  cart_subtotal: 'هزینه محصولات',
+  cart_shipping: 'هزینه حمل و نقل',
+  free: 'رایگان',
+  cart_total: 'هزینه کل خرید',
+  cart_checkout: 'پرداخت',
+  cart_continue_shopping: 'بازگشت به فروشگاه',
 }
