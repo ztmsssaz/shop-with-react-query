@@ -15,6 +15,8 @@ export const fa = {
   AddToCart_button: 'افزودن به سبد خرید',
   currency: 'تومان',
   add_to_cart: 'با موفقیت به سبد خرید اضافه شد',
+  remove_from_cart: 'با موفقیت از سبد خرید حذف شد',
+  remove_question: 'محصول از سبد خرید شما حذف شود؟',
   cart_empty: 'سبد خرید شما خالی است!',
   cart_summary: 'خلاصه خرید',
   cart_subtotal: 'هزینه محصولات',
@@ -23,4 +25,6 @@ export const fa = {
   cart_total: 'هزینه کل خرید',
   cart_checkout: 'پرداخت',
   cart_continue_shopping: 'بازگشت به فروشگاه',
+  yes: 'بله',
+  no: 'خیر',
 }

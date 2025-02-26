@@ -5,11 +5,14 @@ import {
   type cartState,
   removeFromCart,
   addToCart,
+  CartItem,
   removeOneProductFromCart,
 } from '../../store/cart-slice'
 import {Link} from 'react-router-dom'
 import {useCartDispatch} from '../../store/hooks'
-import {ToastFunc} from './confirmDialog'
+import toast from 'react-hot-toast'
+import ConfirmDialog from './confirmDialog'
+import {useCallback, useState} from 'react'
 
 const CartPage = () => {
   const {t, i18n} = useTranslation()
@@ -18,10 +21,12 @@ const CartPage = () => {
 
   const subtotal = cartState.items.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
-  const handleRemoveFromCart = (id: number) => {
-    //@ts-ignore
-    dispatch(removeFromCart(id))
-  }
+  const handleRemoveFromCart = useCallback((item: CartItem) => {
+    dispatch(removeFromCart(item.id))
+  }, [])
+  const handleDeleteOneProduct = useCallback((product: CartItem) => {
+    dispatch(removeOneProductFromCart(product.id))
+  }, [])
 
   return (
     <div className={`min-h-screen ${i18n.dir() === 'rtl' ? 'rtl' : 'ltr'}`}>
@@ -40,7 +45,7 @@ const CartPage = () => {
                 <p>{t('cart_empty')}</p>
               </div>
             ) : (
-              cartState.items.map((item) => (
+              cartState.items.map((item: CartItem) => (
                 <div
                   key={item.id}
                   className='bg-white text-slate-700 p-4 rounded-lg shadow-sm flex gap-4'
@@ -51,12 +56,12 @@ const CartPage = () => {
                     className='w-24 h-24 object-contain border rounded'
                   />
                   <div className='flex-1'>
-                    <h3 className='font-semibold'>{item.name}</h3>
+                    <h3 className='font-semibold'>{item.title}</h3>
                     <div className='flex items-center justify-between'>
                       <div className='flex items-center gap-2'>
                         <button
                           className='px-2 py-1 border rounded active:bg-slate-400'
-                          onClick={() => handleRemoveFromCart(item.id)}
+                          onClick={() => handleRemoveFromCart(item)}
                         >
                           -
                         </button>
@@ -74,7 +79,7 @@ const CartPage = () => {
                         </span>
                         <button
                           className='text-red-500 hover:text-red-600'
-                          onClick={() => dispatch(removeOneProductFromCart(item.id))}
+                          onClick={() => handleDeleteOneProduct(item)}
                         >
                           <Trash2 className='w-5 h-5' />
                         </button>

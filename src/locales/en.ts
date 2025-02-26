@@ -15,6 +15,8 @@ export const en = {
   AddToCart_button: 'Add To Cart',
   currency: '$',
   add_to_cart: 'Added Seccessfully',
+  remove_from_cart: 'Removed Seccessfully!',
+  remove_question: 'Remove product from Cart?',
   cart_empty: 'Cart is empty!',
   cart_summary: 'Sart Summary',
   cart_subtotal: 'Subtotal',
@@ -23,4 +25,6 @@ export const en = {
   cart_total: 'Total',
   cart_checkout: 'Checkout',
   cart_continue_shopping: 'Continue Shopping',
+  yes: 'Yes',
+  no: 'No',
 }
