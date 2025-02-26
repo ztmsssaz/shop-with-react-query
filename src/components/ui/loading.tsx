@@ -37,7 +37,7 @@ const FallbackLoading = () => {
           </svg>
         </div>
         <p
-          className={`mt-4 text-gray-600 text-lg ${
+          className={`mt-4 text-lg text-slate-800 ${
             language === 'fa' ? 'font-vazirmatn' : 'font-roboto'
           }`}
         >

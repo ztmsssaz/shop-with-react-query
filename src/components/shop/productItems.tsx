@@ -1,17 +1,21 @@
 import {useEffect, useState} from 'react'
-import {useSelector} from 'react-redux'
+// import {useSelector} from 'react-redux'
 import {getRequest} from '../../api'
 import {AxiosResponse} from 'axios'
 import SingleProduct, {Product} from './product'
+import {useTranslation} from 'react-i18next'
 
 function ProductItems() {
-  const data = useSelector((state: any) => state.cart)
+  // const data = useSelector((state: any) => state.cart)
 
   const [products, setProducts] = useState<Product[]>([])
+  const {
+    i18n: {language},
+  } = useTranslation()
 
   async function getProducts() {
     try {
-      getRequest('/products').then((res: AxiosResponse) => {
+      getRequest('/products', {locale: language}).then((res: AxiosResponse) => {
         setProducts(res.data)
       })
     } catch (error) {
@@ -21,7 +25,7 @@ function ProductItems() {
 
   useEffect(() => {
     getProducts()
-  }, [])
+  }, [language])
 
   return (
     <div className='flex flex-wrap justify-around'>

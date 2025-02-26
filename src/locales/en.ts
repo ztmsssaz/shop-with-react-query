@@ -12,4 +12,7 @@ export const en = {
   invalid_password: 'Please just enter Aa-Zz,Charecters and numbers',
   required: 'Required',
   loading: 'Loading...',
+  AddToCart_button: 'Add To Cart',
+  currency: '$',
+  add_to_cart: 'Added Seccessfully',
 }

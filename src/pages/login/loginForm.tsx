@@ -3,7 +3,7 @@ import {useForm} from 'react-hook-form'
 import {object, string} from 'yup'
 import {yupResolver} from '@hookform/resolvers/yup'
 // @ts-ignore
-import {EyeOpen, EyeClose} from '../../components/ui/icons/icons'
+import {EyeOpen, EyeClose} from '../../components/icons/icons'
 import {useState} from 'react'
 
 const LoginForm = () => {

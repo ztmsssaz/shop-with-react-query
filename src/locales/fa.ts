@@ -12,4 +12,7 @@ export const fa = {
   invalid_password: 'لطفا از حروف  و اعداد انگلیسی و کاراکترها بجز > <  استفاده کنید',
   required: 'اجباری',
   loading: 'در حال بارگذاری...',
+  AddToCart_button: 'افزودن به سبد خرید',
+  currency: 'تومان',
+  add_to_cart: 'با موفقیت به سبد خرید اضافه شد',
 }
