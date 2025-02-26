@@ -2,7 +2,7 @@ import {type Product} from './product'
 import {useTranslation} from 'react-i18next'
 import {addToCart, CartItem} from '../../store/cart-slice'
 import {useCartDispatch} from '../../store/hooks'
-import {toast} from 'react-toastify'
+import {toast} from 'react-hot-toast'
 
 function AddToCartButton({item, className}: {item: Product | CartItem; className: string}) {
   const dispatch = useCartDispatch()
@@ -10,9 +10,8 @@ function AddToCartButton({item, className}: {item: Product | CartItem; className
 
   function handleAddToCart() {
     dispatch(addToCart(item as CartItem))
-    toast.success(item.title + ' ' + t('add_to_cart'), {
-      pauseOnHover: false,
-      position: 'bottom-right',
+    toast.success(`"${item.title}"` + ' ' + t('add_to_cart'), {
+      position: 'top-right',
     })
   }
 
