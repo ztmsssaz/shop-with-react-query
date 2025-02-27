@@ -9,7 +9,6 @@ export type Product = {
   qty: number
   description: string
 }
-
 function SingleProduct({product}: {product: Product}) {
   const {t} = useTranslation()
   return (
@@ -24,7 +23,7 @@ function SingleProduct({product}: {product: Product}) {
         </div>
         <div>
           <h2 className='font-bold text-lg my-2'>{product.title}</h2>
-          <p className='py-1'>{product.description}</p>
+          <p className='text-sm py-1'>{product.description}</p>
           <h3 className='py-1'>{product.price + ' ' + t('currency')}</h3>
         </div>
         <div className='min-h-10'>

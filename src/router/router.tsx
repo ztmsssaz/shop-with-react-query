@@ -3,7 +3,7 @@
 import {lazy, Suspense} from 'react'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Layout from '../layout'
-import FallbackLoading from '../components/ui/loading'
+import FallbackLoading from '../components/ui/fallbackLoading'
 
 const App = () => <h2>App page</h2>
 const Login = lazy(() => import('../pages/login'))

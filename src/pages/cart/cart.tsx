@@ -10,9 +10,6 @@ import {
 } from '../../store/cart-slice'
 import {Link} from 'react-router-dom'
 import {useCartDispatch} from '../../store/hooks'
-import toast from 'react-hot-toast'
-import ConfirmDialog from './confirmDialog'
-import {useCallback, useState} from 'react'
 
 const CartPage = () => {
   const {t, i18n} = useTranslation()

@@ -7,8 +7,16 @@ import './index.css'
 import {Provider} from 'react-redux'
 import {store} from './store/store.ts'
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
-
-const client = new QueryClient({})
+import {ReactQueryDevtools} from '@tanstack/react-query-devtools'
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // refetchInterval: 7000,
+      // staleTime: 7000,
+      gcTime: 120 * 1000,
+    },
+  },
+})
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -16,6 +24,7 @@ createRoot(document.getElementById('root')!).render(
       <QueryClientProvider client={client}>
         <I18nextProvider i18n={i18n}>
           <App />
+          <ReactQueryDevtools />
         </I18nextProvider>
       </QueryClientProvider>
     </Provider>
