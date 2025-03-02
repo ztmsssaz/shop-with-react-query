@@ -31,4 +31,8 @@ export const en = {
   minutes_ago: 'minutes ago',
   hours_ago: 'hours ago',
   days_ago: 'days ago',
+  all: 'all',
+  chinese: 'Chinese',
+  iranian: 'Iranian',
+  german: 'German',
 }

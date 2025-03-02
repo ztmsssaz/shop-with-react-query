@@ -1,10 +1,12 @@
 import {useTranslation} from 'react-i18next'
-import ProductItems from '../../components/shop/productItems'
 import {useState} from 'react'
+import ProductsContainer from '../../components/shop/productsContainter'
+import ProductFilter from '../../components/shop/filter'
 
 function Shop() {
   const {t} = useTranslation()
   const [toggle, setToggle] = useState(true)
+  const [filterValue, setFilter] = useState('')
 
   return (
     <div className='relative min-h-screen'>
@@ -14,12 +16,13 @@ function Shop() {
       <div>
         <button
           onClick={() => setToggle(!toggle)}
-          className='p-2 bg-slate-50 text-slate-700 border border-slate-800 rounded-md'
+          className='hidden p-2 bg-slate-50 text-slate-700 border border-slate-800 rounded-md'
         >
           Shop Toggle
         </button>
       </div>
-      {toggle && <ProductItems />}
+      <ProductFilter onFilter={setFilter} />
+      {toggle && <ProductsContainer filterValue={filterValue} />}
     </div>
   )
 }

@@ -31,4 +31,8 @@ export const fa = {
   minutes_ago: 'دقیقه پیش',
   hours_ago: 'ساعت پیش ',
   days_ago: 'روز پیش',
+  all: 'همه',
+  chinese: 'چینی',
+  iranian: 'ایرانی',
+  german: 'آلمانی',
 }
