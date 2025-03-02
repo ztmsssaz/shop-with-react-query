@@ -1,3 +1,4 @@
+import {useCallback} from 'react'
 import {useTranslation} from 'react-i18next'
 import {ShoppingCart, Trash2, ChevronLeft, CreditCard, ChevronRight} from 'lucide-react'
 import {useSelector} from 'react-redux'

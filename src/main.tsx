@@ -12,8 +12,10 @@ const client = new QueryClient({
   defaultOptions: {
     queries: {
       // refetchInterval: 7000,
-      // staleTime: 7000,
-      gcTime: 120 * 1000,
+      staleTime: 3 * 1000, //کهنه شدن
+      gcTime: 50 * 1000, // زمان ماندن در کش
+      // refetchOnWindowFocus: false, //جابجا شدن در تب های ویندوز
+      // refetchOnMount: false, //  رندر شدن دوباره کامپوننت در صورت کهنه بودت دیتای قبلی
     },
   },
 })

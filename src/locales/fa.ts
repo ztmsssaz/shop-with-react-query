@@ -27,4 +27,8 @@ export const fa = {
   cart_continue_shopping: 'بازگشت به فروشگاه',
   yes: 'بله',
   no: 'خیر',
+  seconds_ago: 'ثانیه پیش',
+  minutes_ago: 'دقیقه پیش',
+  hours_ago: 'ساعت پیش ',
+  days_ago: 'روز پیش',
 }

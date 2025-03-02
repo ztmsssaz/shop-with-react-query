@@ -27,4 +27,8 @@ export const en = {
   cart_continue_shopping: 'Continue Shopping',
   yes: 'Yes',
   no: 'No',
+  seconds_ago: 'seconds ago',
+  minutes_ago: 'minutes ago',
+  hours_ago: 'hours ago',
+  days_ago: 'days ago',
 }
