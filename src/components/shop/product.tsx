@@ -1,3 +1,4 @@
+import {getFlagEmoji} from '../../helpers/flags'
 import AddToCartButton from './addToCart'
 import {useTranslation} from 'react-i18next'
 
@@ -8,13 +9,14 @@ export type Product = {
   image: string
   qty: number
   description: string
+  country: string
 }
 function SingleProduct({product}: {product: Product}) {
   const {t} = useTranslation()
   return (
     <div
       id={`r_${product.id}`}
-      className='relative w-full xs:w-1/2 sm:w-1/3 md:w-1/4 xl:w-1/5 flex flex-col justify-around my-1 cursor-pointer'
+      className='relative w-full flex flex-col justify-around my-1 cursor-pointer'
     >
       <div className='bg-slate-900 min-h-[400px] sm:min-h-[425px] hover:bg-slate-950 transition-[.4s] rounded m-1 p-3'>
         <div className='rounded-md overflow-hidden'>
@@ -25,7 +27,10 @@ function SingleProduct({product}: {product: Product}) {
           />
         </div>
         <div>
-          <h2 className='font-bold text-lg my-2'>{product.title}</h2>
+          <h2 className='font-bold text-lg my-2 flex'>
+            {product.title}
+            <span className='text-lg mx-1'>{getFlagEmoji(product.country)}</span>
+          </h2>
           <p className='text-sm py-1'>{product.description}</p>
           <h3 className='py-1'>{product.price + ' ' + t('currency')}</h3>
         </div>

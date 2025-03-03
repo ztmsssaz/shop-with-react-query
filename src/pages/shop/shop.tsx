@@ -6,7 +6,7 @@ import ProductFilter from '../../components/shop/filter'
 function Shop() {
   const {t} = useTranslation()
   const [toggle, setToggle] = useState(true)
-  const [filterValue, setFilter] = useState('')
+  const [country, setCountry] = useState('all')
 
   return (
     <div className='relative min-h-screen'>
@@ -21,8 +21,8 @@ function Shop() {
           Shop Toggle
         </button>
       </div>
-      <ProductFilter onFilter={setFilter} />
-      {toggle && <ProductsContainer filterValue={filterValue} />}
+      <ProductFilter onFilter={setCountry} />
+      {toggle && <ProductsContainer filterValue={country} />}
     </div>
   )
 }

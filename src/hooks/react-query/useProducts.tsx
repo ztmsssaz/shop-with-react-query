@@ -22,7 +22,7 @@ function useProducts(product_country: string) {
   const {data, isPending}: UseQueryResult<Product[], Error> = useQuery({
     queryKey: ['products', language, product_country],
     queryFn: ({queryKey}: {queryKey: string[]}) => getProducts(queryKey),
-    staleTime: 5 * 1000, //کهنه شدن
+    staleTime: 120 * 1000, //کهنه شدن
   })
 
   return {data, isPending}

@@ -6,9 +6,9 @@ export default function ProductFilter({onFilter}: {onFilter: (filter: string) =>
   const {t} = useTranslation()
   const filters = [
     {label: t('all'), value: 'all'},
-    {label: t('chinese'), value: 'chinese'},
-    {label: t('iranian'), value: 'iranian'},
-    {label: t('german'), value: 'german'},
+    {label: t('chinese'), value: 'CN'},
+    {label: t('iranian'), value: 'IR'},
+    {label: t('german'), value: 'DE'},
   ]
 
   const handleFilter = (value: string) => {
