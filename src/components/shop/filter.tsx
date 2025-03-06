@@ -1,9 +1,13 @@
 import {useState} from 'react'
 import {useTranslation} from 'react-i18next'
+import {ProductsPageParams} from '../../hooks/react-query/useProductsPaginated'
+import {useSearchParams} from 'react-router-dom'
 
-export default function ProductFilter({onFilter}: {onFilter: (filter: string) => void}) {
+export default function ProductFilter({onFilter}: {onFilter: (data: ProductsPageParams) => void}) {
   const [selected, setSelected] = useState<string | null>(null)
   const {t} = useTranslation()
+  const [searchParams, setSearchParams] = useSearchParams()
+
   const filters = [
     {label: t('all'), value: 'all'},
     {label: t('chinese'), value: 'CN'},
@@ -13,7 +17,11 @@ export default function ProductFilter({onFilter}: {onFilter: (filter: string) =>
 
   const handleFilter = (value: string) => {
     setSelected(value)
-    onFilter(value)
+    onFilter({
+      country: value,
+      page: 1,
+    })
+    setSearchParams({country: value})
   }
 
   return (
@@ -25,7 +33,7 @@ export default function ProductFilter({onFilter}: {onFilter: (filter: string) =>
             onClick={() => handleFilter(filter.value)}
             className={`px-4 py-2 rounded-lg transition-all
               ${
-                selected === filter.value
+                selected === filter.value || searchParams.get('country') === filter.value
                   ? 'bg-slate-900 text-white'
                   : 'bg-slate-600 text-slate-300'
               } 

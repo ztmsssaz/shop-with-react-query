@@ -1,12 +1,12 @@
 import {useTranslation} from 'react-i18next'
 import {useState} from 'react'
 import ProductsContainer from '../../components/shop/productsContainter'
-import ProductFilter from '../../components/shop/filter'
+// import ProductFilter from '../../components/shop/filter'
+// import Pagination from '../../components/ui/paginate'
 
 function Shop() {
   const {t} = useTranslation()
   const [toggle, setToggle] = useState(true)
-  const [country, setCountry] = useState('all')
 
   return (
     <div className='relative min-h-screen'>
@@ -21,8 +21,7 @@ function Shop() {
           Shop Toggle
         </button>
       </div>
-      <ProductFilter onFilter={setCountry} />
-      {toggle && <ProductsContainer filterValue={country} />}
+      {toggle && <ProductsContainer />}
     </div>
   )
 }
