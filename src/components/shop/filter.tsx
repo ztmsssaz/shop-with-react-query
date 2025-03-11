@@ -2,11 +2,17 @@ import {useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {ProductsPageParams} from '../../hooks/react-query/useProductsPaginated'
 import {useSearchParams} from 'react-router-dom'
+import {useForm} from 'react-hook-form'
 
+type Inputs = {
+  search: string | '' | null
+}
 export default function ProductFilter({onFilter}: {onFilter: (data: ProductsPageParams) => void}) {
-  const [selected, setSelected] = useState<string | null>(null)
+  const [selected, setSelected] = useState<string | null>('all')
   const {t} = useTranslation()
   const [searchParams, setSearchParams] = useSearchParams()
+  const search: string = searchParams.get('search') as string
+  const {register} = useForm<Inputs>()
 
   const filters = [
     {label: t('all'), value: 'all'},
@@ -20,12 +26,32 @@ export default function ProductFilter({onFilter}: {onFilter: (data: ProductsPage
     onFilter({
       country: value,
       page: 1,
+      search,
     })
-    setSearchParams({country: value})
+    setSearchParams({country: value, search})
+  }
+  const debounce = <T extends (...args: any[]) => void>(func: T, time: number) => {
+    let timer: ReturnType<typeof setTimeout>
+    return (...args: Parameters<T>) => {
+      clearTimeout(timer)
+      timer = setTimeout(() => {
+        func(...args)
+      }, time)
+    }
+  }
+
+  const handleSearch = (e: any) => {
+    e.preventDefault()
+    onFilter({
+      country: selected || 'all',
+      page: 1,
+      search: e.target.value,
+    })
+    setSearchParams({country: selected || 'all', search: e.target.value})
   }
 
   return (
-    <div className='bg-slate-800 p-4 rounded-md shadow-md text-white mx-1'>
+    <div className='flex items-center justify-around bg-slate-800 p-4 rounded-md shadow-md text-white mx-1'>
       <div className='flex flex-wrap gap-2'>
         {filters.map((filter) => (
           <button
@@ -42,6 +68,18 @@ export default function ProductFilter({onFilter}: {onFilter: (data: ProductsPage
             {filter.label}
           </button>
         ))}
+      </div>
+      <div>
+        <form>
+          <input
+            type='text'
+            defaultValue={search}
+            {...register('search')}
+            onChange={debounce(handleSearch, 500)}
+            placeholder={t('search')}
+            className='w-full p-2 rounded-md text-black'
+          />
+        </form>
       </div>
     </div>
   )

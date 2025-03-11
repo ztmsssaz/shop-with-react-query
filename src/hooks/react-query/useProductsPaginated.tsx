@@ -8,6 +8,7 @@ import {useCallback} from 'react'
 export type ProductsPageParams = {
   country?: string | null
   page: number
+  search: string | '' | null
 }
 type PaginateData = {
   results: Product[]
@@ -29,10 +30,10 @@ function useProductsPaginate(pageParams: ProductsPageParams) {
   let totalItem: number = 0
 
   const getProducts = useCallback(
-    async (queryKey: string[]) => {
-      const queryParams = {locale: language, page: queryKey[2], country: queryKey[3]}
-      if (queryKey[3] != 'all') {
-        queryParams.country = queryKey[3]
+    async (queryKey: [string, string, {page: number; country: string}]) => {
+      const queryParams = {locale: language, ...queryKey[2]}
+      if (queryKey[2].country != 'all') {
+        queryParams.country = queryKey[2].country
       }
       await getRequest('/products/paged', queryParams).then((res: AxiosResponse) => {
         result = res.data
@@ -43,13 +44,13 @@ function useProductsPaginate(pageParams: ProductsPageParams) {
   )
 
   const {data, isPending}: UseQueryResult<Product[], Error> = useQuery({
-    queryKey: ['products', language, `${pageParams.page}`, pageParams.country as string],
-    queryFn: ({queryKey}: {queryKey: string[]}) => getProducts(queryKey),
+    queryKey: ['products', language, pageParams],
+    queryFn: ({queryKey}: {queryKey: any}) => getProducts(queryKey),
     select: (res: PaginateData) => {
       totalItem = res.count
       return res.results
     },
-    staleTime: 120 * 1000, //کهنه شدن
+    staleTime: 1 * 1000, //کهنه شدن
   })
 
   return {data, isPending, totalItem}

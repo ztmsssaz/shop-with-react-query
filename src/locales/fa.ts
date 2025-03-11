@@ -35,4 +35,6 @@ export const fa = {
   chinese: 'چینی',
   iranian: 'ایرانی',
   german: 'آلمانی',
+  search: 'جستجو',
+  emptyList: 'موردی برای نمایش موجود نیست',
 }

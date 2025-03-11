@@ -3,7 +3,7 @@ import ProductsList from './productsList'
 // import useProducts from '../../hooks/react-query/useProducts'
 import useProductsPaginate from '../../hooks/react-query/useProductsPaginated'
 import {ProductsPageParams} from '../../hooks/react-query/useProductsPaginated'
-import {useCallback, useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import ProductFilter from './filter'
 import Pagination from '../ui/paginate'
 import {useSearchParams} from 'react-router-dom'
@@ -17,6 +17,7 @@ function ProductsContainer() {
   const [pageParams, setPageparams] = useState<ProductsPageParams>({
     country: searchParams.get('country'),
     page: 1,
+    search: searchParams.get('search'),
   })
   const {data, totalItem, isPending} = useProductsPaginate(pageParams)
 

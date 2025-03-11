@@ -35,4 +35,6 @@ export const en = {
   chinese: 'Chinese',
   iranian: 'Iranian',
   german: 'German',
+  search: 'search',
+  emptyList: 'ٔNo Items Found',
 }
