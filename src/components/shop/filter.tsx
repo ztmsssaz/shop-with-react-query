@@ -5,10 +5,10 @@ import {useSearchParams} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 
 type Inputs = {
-  search: string | '' | null
+  search: string | ''
 }
 export default function ProductFilter({onFilter}: {onFilter: (data: ProductsPageParams) => void}) {
-  const [selected, setSelected] = useState<string | null>('all')
+  const [selectedCountry, setSelectedCountry] = useState<string | null>('all')
   const {t} = useTranslation()
   const [searchParams, setSearchParams] = useSearchParams()
   const search: string = searchParams.get('search') as string
@@ -22,7 +22,7 @@ export default function ProductFilter({onFilter}: {onFilter: (data: ProductsPage
   ]
 
   const handleFilter = (value: string) => {
-    setSelected(value)
+    setSelectedCountry(value)
     onFilter({
       country: value,
       page: 1,
@@ -43,11 +43,11 @@ export default function ProductFilter({onFilter}: {onFilter: (data: ProductsPage
   const handleSearch = (e: any) => {
     e.preventDefault()
     onFilter({
-      country: selected || 'all',
+      country: selectedCountry || 'all',
       page: 1,
       search: e.target.value,
     })
-    setSearchParams({country: selected || 'all', search: e.target.value})
+    setSearchParams({country: selectedCountry || 'all', search: e.target.value})
   }
 
   return (
@@ -59,7 +59,7 @@ export default function ProductFilter({onFilter}: {onFilter: (data: ProductsPage
             onClick={() => handleFilter(filter.value)}
             className={`px-4 py-2 rounded-lg transition-all
               ${
-                selected === filter.value || searchParams.get('country') === filter.value
+                selectedCountry === filter.value || searchParams.get('country') === filter.value
                   ? 'bg-slate-900 text-white'
                   : 'bg-slate-600 text-slate-300'
               } 

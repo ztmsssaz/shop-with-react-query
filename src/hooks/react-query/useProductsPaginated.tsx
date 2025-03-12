@@ -8,7 +8,7 @@ import {useCallback} from 'react'
 export type ProductsPageParams = {
   country?: string | null
   page: number
-  search: string | '' | null
+  search: string | ''
 }
 type PaginateData = {
   results: Product[]
